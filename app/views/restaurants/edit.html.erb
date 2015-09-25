@@ -1,0 +1,13 @@
+<%= link_to "Home", root_path %>
+<% if admin_signed_in? %>
+<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+<h1>Editing Restaurant</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @restaurant %> |
+<%= link_to 'Back', restaurants_path %>
+<% else %>
+<% render 'devise/sessions/form' %>
+<% link_to "Admin Sign In", new_admin_session_path %>
+<% end %>

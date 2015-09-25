@@ -1,0 +1,72 @@
+<% if admin_signed_in? %>
+<%= link_to "Logout", destroy_admin_session_path, :method => :delete %>  
+<% end %>
+<% if user_signed_in? %>
+<%= link_to "Logout", destroy_user_session_path, :method => :delete %>  
+<% else %>
+<%= link_to "Sign In", new_user_session_path %>  
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Cuisine:</strong>
+  <%= @restaurant.cuisine %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @restaurant.description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @restaurant.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @restaurant.rating %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @restaurant.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @restaurant.longitude %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @restaurant.city %>
+</p>
+
+<div>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}" %>
+</div>
+
+<% if user_signed_in? %>
+<%= link_to 'Write a review', :controller => :reviews, :action => :create, :restaurant => @restaurant.id %>
+<% end %>
+<% if admin_signed_in? %>
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<% end %>
+<%= link_to 'Back', restaurants_path %>

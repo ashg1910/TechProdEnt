@@ -1,0 +1,69 @@
+<%= form_for(@restaurant) do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+
+      <ul>
+      <% @restaurant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :cuisine %><br>
+    <%= f.radio_button :cuisine, 'North' %> 
+    <%= label :cuisine_north, 'North' %>
+    <%= f.radio_button :cuisine, 'South'%>
+    <%= label :cuisine_south, 'South' %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.telephone_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br>
+    <%= f.radio_button :rating, 1 %> 
+    <%= label :rating_1, 1 %>
+    <%= f.radio_button :rating, 2 %> 
+    <%= label :rating_2, 2 %>
+    <%= f.radio_button :rating, 3 %> 
+    <%= label :rating_3, 3 %>
+    <%= f.radio_button :rating, 4 %> 
+    <%= label :rating_4, 4 %>
+    <%= f.radio_button :rating, 5 %> 
+    <%= label :rating_5, 5 %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
